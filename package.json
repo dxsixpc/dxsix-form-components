@@ -1,7 +1,7 @@
 {
   "name": "dxsix-form-components",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "author": "dxsixpc",
   "license": "MIT",
   "homepage": "https://github.com/dxsixpc/dxsix-form-components",
@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
@@ -64,7 +64,9 @@
     "@types/react-color": "^3.0.5",
     "@types/react-dom": "^17.0.0",
     "@types/sortablejs": "^1.10.7",
-    "@types/styled-components": "^5.1.14"
+    "@types/styled-components": "^5.1.14",
+    "babel-loader": "8.1.0",
+    "jest": "26.6.0"
   },
   "eslintConfig": {
     "extends": [
@@ -81,6 +83,11 @@
         }
       }
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [

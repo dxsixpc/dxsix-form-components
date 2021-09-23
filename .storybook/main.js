@@ -57,5 +57,10 @@ module.exports = {
 
     // Return the altered config
     return config;
+  },
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, 'src')
+    }
   }
 };
