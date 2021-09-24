@@ -8,7 +8,7 @@ import { OptionsConfigType, OptionType } from '../type';
 export interface FormRadioProps extends RadioProps {
   size?: 'large' | 'middle' | 'small';
   optionsConfig: OptionsConfigType;
-  onChange: (value: RadioChangeEvent) => void;
+  onChange?: (value: RadioChangeEvent) => void;
 }
 
 const FormRadio: React.FC<FormRadioProps> = (props) => {
@@ -19,15 +19,13 @@ const FormRadio: React.FC<FormRadioProps> = (props) => {
 
   const onRadioChange = (e: RadioChangeEvent) => {
     setPropsValue(e.target.value);
-    if (typeof onChange === 'function') {
-      onChange(e.target.value);
-    }
+    onChange && onChange(e.target.value);
   };
 
   useEffect(() => {
     // 设置初始选中的值
-    setPropsValue(optionsConfig?.defaultValue);
-  }, [optionsConfig]);
+    onChange && onChange(propsValue);
+  }, [onChange, propsValue]);
 
   return (
     <Wrapper>

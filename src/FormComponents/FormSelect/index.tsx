@@ -24,7 +24,7 @@ const FormSelect: React.FC<FormSelectProps<string>> = (props) => {
 
   useEffect(() => {
     // 设置初始选中的值
-    onChange(propsValue);
+    onChange && onChange(propsValue);
   }, [onChange, propsValue]);
 
   return (

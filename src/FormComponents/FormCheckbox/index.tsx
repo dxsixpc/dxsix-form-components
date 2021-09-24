@@ -20,14 +20,13 @@ export const FormCheckbox: React.FC<FormCheckboxProps> = (props) => {
 
   const onRadioChange = (RadioChangeValue: CheckboxValueType[]) => {
     setPropsValue(RadioChangeValue);
-    if (typeof onChange === 'function') {
-      onChange(RadioChangeValue);
-    }
+    onChange && onChange(RadioChangeValue);
   };
 
   useEffect(() => {
-    setPropsValue(optionsConfig?.defaultValue as CheckboxValueType[]);
-  }, [optionsConfig]);
+    // 设置初始选中的值
+    onChange && onChange(propsValue);
+  }, [onChange, propsValue]);
 
   return (
     <Wrapper>
