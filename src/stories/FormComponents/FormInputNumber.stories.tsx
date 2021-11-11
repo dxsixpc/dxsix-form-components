@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormInputNumber from '../../FormComponents/FormInputNumber';
 import type { FormInputNumberProps } from '../../FormComponents/FormInputNumber';
 

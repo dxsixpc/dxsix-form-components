@@ -1,9 +1,11 @@
 import React from 'react';
 import { InputNumber } from 'antd';
-import { InputNumberProps } from 'antd/lib/input-number';
+import type { InputNumberProps } from 'antd/lib/input-number';
 import { Wrapper } from './Styled';
 
-export interface FormInputNumberProps extends InputNumberProps {}
+export interface FormInputNumberProps extends InputNumberProps {
+  props?: any;
+}
 
 const FormInput: React.FC<FormInputNumberProps> = (props) => {
   const { ...rest } = props;

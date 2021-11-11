@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormCheckbox from '../../FormComponents/FormCheckbox';
 import type { FormCheckboxProps } from '../../FormComponents/FormCheckbox';
 

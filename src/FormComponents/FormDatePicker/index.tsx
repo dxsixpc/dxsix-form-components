@@ -3,7 +3,8 @@ import { DatePicker } from 'antd';
 import type { DatePickerProps } from 'antd/lib/date-picker';
 import { Wrapper } from './Styled';
 import 'moment/locale/zh-cn';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
+import type { Moment } from 'moment';
 import locale from 'antd/lib/date-picker/locale/zh_CN';
 moment.locale('zh-cn');
 

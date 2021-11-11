@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormSwitch from '../../FormComponents/FormSwitch';
 import type { FormSwitchProps } from '../../FormComponents/FormSwitch';
 

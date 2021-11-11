@@ -3,7 +3,9 @@ import MonacoEditor from 'react-monaco-editor';
 import type { MonacoEditorProps } from 'react-monaco-editor';
 import { Wrapper } from './Styled';
 
-export interface FormMonacoEditorProps extends MonacoEditorProps {}
+export interface FormMonacoEditorProps extends MonacoEditorProps {
+  props?: any;
+}
 
 const FormMonacoEditor: React.FC<FormMonacoEditorProps> = (props) => {
   const {
@@ -17,7 +19,7 @@ const FormMonacoEditor: React.FC<FormMonacoEditorProps> = (props) => {
   } = props;
 
   return (
-    <Wrapper className="MonacoEditor">
+    <Wrapper className='MonacoEditor'>
       <MonacoEditor
         width={width}
         height={height}

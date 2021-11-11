@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Layout, Button } from 'antd';
 import { Wrapper } from './Styled';
 
@@ -8,7 +8,7 @@ interface PanelFooterProps {
 }
 
 // 面板尾部
-const PanelFooter: FC<PanelFooterProps> = (props) => {
+const PanelFooter: React.FC<PanelFooterProps> = (props) => {
   const { onSubmit, onClose } = props;
   const { Footer } = Layout;
 

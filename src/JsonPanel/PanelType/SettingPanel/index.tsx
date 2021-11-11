@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Tabs } from 'antd';
 import { ComponentsRender } from '../../ComponentsRender';
-import { PanelBaseProps, PanelTabsType, PanelConfigType } from '../../type';
+import type { PanelBaseProps, PanelTabsType, PanelConfigType } from '../../type';
 import { Wrapper } from './Styled';
 
 export interface SettingPanelProps extends PanelBaseProps {
@@ -9,7 +9,7 @@ export interface SettingPanelProps extends PanelBaseProps {
 }
 
 // 渲染Tabs页
-const SettingPanel: FC<SettingPanelProps> = (props) => {
+const SettingPanel: React.FC<SettingPanelProps> = (props) => {
   const { panelData, panelConfig, componentMap, onSettingChange } = props;
   const { TabPane } = Tabs;
 

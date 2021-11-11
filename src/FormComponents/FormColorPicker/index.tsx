@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import type { ColorResult, RGBColor, SketchPickerProps } from 'react-color';
 import { Button } from 'antd';
 import { SketchPicker } from 'react-color';
@@ -8,7 +8,7 @@ import {
   ColorCube,
   ColorCubeContainer,
   ColorCubes,
-  ColorPickerContainer,
+  ColorPickerContainer
 } from './Styled';
 
 const obj2rgb = ({ r, g, b, a }: RGBColor) => `rgba(${r},${g},${b},${a || 1})`;
@@ -23,7 +23,7 @@ export interface FormColorPickerProps
   onChange?: (color: string) => void;
 }
 
-const FormColorPicker: FC<FormColorPickerProps> = ({
+const FormColorPicker: React.FC<FormColorPickerProps> = ({
   value = '#000000',
   onChange,
   ...props
@@ -60,13 +60,11 @@ const FormColorPicker: FC<FormColorPickerProps> = ({
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
     // 鼠标点击位置坐标
-    const clientX = e.clientX;
-    const clientY = e.clientY;
+    const { clientX, clientY } = e;
     // 颜色选择弹框最终定位
     const clientPosition = { x: clientX, y: clientY };
     // 浏览器可视区域宽高
-    const clientWidth = document.documentElement.clientWidth;
-    const clientHeight = document.documentElement.clientHeight;
+    const { clientWidth, clientHeight } = document.documentElement;
 
     // 颜色选择弹框宽高为 328 346
     // 若点击处距离浏览器右边宽度不足以显示颜色弹框时。
@@ -97,11 +95,11 @@ const FormColorPicker: FC<FormColorPickerProps> = ({
             styles={{
               default: {
                 picker: { boxShadow: 'none' },
-                color: { display: 'none' },
-              },
+                color: { display: 'none' }
+              }
             }}
             color={value}
-            width="250px"
+            width='250px'
             onChange={onColorChange}
             onChangeComplete={onColorChange}
             presetColors={[
@@ -120,15 +118,15 @@ const FormColorPicker: FC<FormColorPickerProps> = ({
               '#4A4A4A',
               '#9B9B9B',
               '#FFFFFF',
-              'transparent',
+              'transparent'
             ]}
             {...props}
           />
           <Actions>
             <Buttons>
               <Button
-                size="small"
-                type="primary"
+                size='small'
+                type='primary'
                 onClick={() => {
                   onButtonClick(currColor);
                   setPickerVisible(false);
@@ -137,7 +135,7 @@ const FormColorPicker: FC<FormColorPickerProps> = ({
                 确定
               </Button>
               <Button
-                size="small"
+                size='small'
                 onClick={() => {
                   onButtonClick(initColor);
                   setCurrColor(initColor);
@@ -148,10 +146,10 @@ const FormColorPicker: FC<FormColorPickerProps> = ({
             </Buttons>
             <ColorCubes>
               <div>新的</div>
-              <ColorCube width="48px" height="32px" color={currColor} />
+              <ColorCube width='48px' height='32px' color={currColor} />
               <ColorCube
-                width="48px"
-                height="32px"
+                width='48px'
+                height='32px'
                 onClick={() => onButtonClick(initColor)}
                 color={initColor}
               />

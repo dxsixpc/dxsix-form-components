@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormSelect from '../../FormComponents/FormSelect';
 import type { FormSelectProps } from '../../FormComponents/FormSelect';
 

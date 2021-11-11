@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormColorPicker from '../../FormComponents/FormColorPicker';
 import type { FormColorPickerProps } from '../../FormComponents/FormColorPicker';
 

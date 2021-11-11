@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import { Layout } from 'antd';
 import {
   SettingFilled,
@@ -17,7 +17,7 @@ export interface PanelHeaderProps {
 }
 
 // 面板头部
-const PanelHeader: FC<PanelHeaderProps> = (props) => {
+const PanelHeader: React.FC<PanelHeaderProps> = (props) => {
   const { panelType, onBig, onSmall, onClose } = props;
   const { Header } = Layout;
   // 控制面板放大缩小显示的样式

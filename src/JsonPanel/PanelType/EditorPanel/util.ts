@@ -41,7 +41,7 @@ export const formatJson = (
     reg = /:/g;
     json = json.replace(reg, ':');
   }
-  json.split('\r\n').forEach(function (node: any, index: any) {
+  json.split('\r\n').forEach(function (node: any) {
     let i = 0;
     let indent = 0;
     let padding = '';

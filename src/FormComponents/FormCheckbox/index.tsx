@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Checkbox, List } from 'antd';
-import { CheckboxGroupProps } from 'antd/lib/checkbox';
-import { CheckboxValueType } from 'antd/lib/checkbox/Group';
+import type { CheckboxGroupProps } from 'antd/lib/checkbox';
+import type { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { uniqueId } from 'lodash';
 import { Wrapper } from './Styled';
-import { OptionsConfigType, OptionType } from '../type';
+import type { OptionsConfigType, OptionType } from '../type';
 
 export interface FormCheckboxProps extends CheckboxGroupProps {
   size?: 'large' | 'middle' | 'small';

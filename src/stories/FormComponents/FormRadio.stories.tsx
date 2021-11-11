@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormRadio from '../../FormComponents/FormRadio';
 import type { FormRadioProps } from '../../FormComponents/FormRadio';
 

@@ -1,4 +1,4 @@
-import { OptionsConfigType } from '../../FormComponents';
+import type { OptionsConfigType } from '../../FormComponents';
 
 // 可嵌套的条件表达式
 export interface Expresssion {

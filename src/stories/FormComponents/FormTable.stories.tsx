@@ -1,10 +1,11 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormTable from '../../FormComponents/FormTable';
 import type { FormTableProps } from '../../FormComponents/FormTable';
 
 export default {
   title: 'FormComponents/FormTable',
-  component: FormTable,
+  component: FormTable
 } as Meta;
 
 const Template: Story<FormTableProps> = (args) => <FormTable {...args} />;
@@ -17,20 +18,12 @@ Table.args = {
       title: '序号',
       dataIndex: 'key',
       width: '100px',
-      align: 'center',
+      align: 'center'
     },
     {
       title: '贺词内容',
       dataIndex: 'congratulatory_message',
-      align: 'center',
-    },
-  ],
-  componentList: [
-    {
-      id: 'congratulatory_message',
-      label: '贺词内容',
-      name: 'congratulatory_message',
-      type: 'FormTextArea',
-    },
-  ],
+      align: 'center'
+    }
+  ]
 };

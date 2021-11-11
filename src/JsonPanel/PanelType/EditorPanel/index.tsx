@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import 'antd/dist/antd.css';
 import { FormMonacoEditor } from '../../../FormComponents';
 import type { PanelBaseProps, PanelConfigType } from '../../type';
@@ -11,13 +11,13 @@ export interface EditorPanelProps extends PanelBaseProps {
 }
 
 // 配置面板
-const EditorPanel: FC<EditorPanelProps> = (props) => {
+const EditorPanel: React.FC<EditorPanelProps> = (props) => {
   const {
     panelData,
     panelConfig,
     monacoLanguage,
     componentMap,
-    onEditorChange,
+    onEditorChange
   } = props;
   const [returnValue, setReturnValue] = useState<AnyObject>();
   const [editorValue, setEditorValue] = useState<PanelConfigType | string>(
@@ -28,7 +28,7 @@ const EditorPanel: FC<EditorPanelProps> = (props) => {
   );
 
   // 每次组件改变时，格式化数据
-  const onValuesChange = (changedValues: AnyObject, _values: AnyObject) => {
+  const onValuesChange = (changedValues: AnyObject) => {
     setReturnValue({ ...returnValue, ...changedValues });
     setInitialValues({ ...initialValues, ...changedValues });
   };
@@ -41,7 +41,7 @@ const EditorPanel: FC<EditorPanelProps> = (props) => {
   return (
     <Wrapper>
       <FormMonacoEditor
-        height="100%"
+        height='100%'
         language={monacoLanguage}
         value={formatJson(JSON.stringify(editorValue))}
         onChange={onMonacoChange}

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { SortableEvent } from 'sortablejs';
+import type { SortableEvent } from 'sortablejs';
 import ReactSortable from 'react-sortablejs';
-import Option, { Options } from './Option';
+import Option from './Option';
+import type { Options } from './Option';
 import { CanvasStyle } from './Styled';
 import produce from 'immer';
 
@@ -29,7 +30,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
 
   const setChangeValue = (newOptions: Options[]) => {
     if (optionsConfig.type === 'Radio') {
-      let defaultValue: string = '';
+      let defaultValue = '';
       newOptions.forEach((option: Options) => {
         if (option.checked) {
           defaultValue = option.value;
@@ -56,7 +57,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
         ...option,
         index: idx,
         value: idx === newOption.index ? newOption.value : option.value,
-        label: idx === newOption.index ? newOption.label : option.label,
+        label: idx === newOption.index ? newOption.label : option.label
       })
     );
     setChangeValue(newOptions);
@@ -75,7 +76,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
               : false
             : idx === index
             ? !option.checked
-            : option.checked,
+            : option.checked
       })
     );
     setChangeValue(newOptions);
@@ -89,8 +90,8 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
         label: `选项${optionsConfig.options.length + 1}`,
         value: `选项${optionsConfig.options.length + 1}`,
         checked: false,
-        index: optionsConfig.options.length + 1,
-      },
+        index: optionsConfig.options.length + 1
+      }
     ];
     setChangeValue(newOptions);
   };
@@ -103,7 +104,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
     });
     const newOptions = draftOptions.map((option: Options, idx: number) => ({
       ...option,
-      index: idx,
+      index: idx
     }));
     setVisible(false);
     setTimeout(() => {
@@ -121,7 +122,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
     });
     const newOptions = draftOptions.map((option: Options, idx: number) => ({
       ...option,
-      index: idx,
+      index: idx
     }));
     setOptionsConfig({ ...optionsConfig, options: newOptions });
     setVisible(false);
@@ -146,13 +147,13 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
         <ReactSortable
           options={{
             group: {
-              name: `options`,
+              name: 'options'
             },
             handle: '.dropMenu',
             sort: true,
-            animation: 150,
+            animation: 150
           }}
-          onChange={(list, sortable, event: SortableEvent) => {
+          onChange={(_list: any, _sortable: any, event: SortableEvent) => {
             onSortableChange(event);
           }}
         >
@@ -172,7 +173,7 @@ export const FormOptions: React.FC<FormOptionsProps> = (props) => {
             );
           })}
           <Button
-            type="text"
+            type='text'
             style={{ color: '#00bcd4' }}
             onClick={onClickAddBtn}
           >

@@ -1,4 +1,4 @@
-import { PanelConfigType } from '../JsonPanel';
+import type { PanelConfigType } from '../JsonPanel';
 
 export const jsonPanelSetting: PanelConfigType = {
   id: 'Tabs',
@@ -144,7 +144,7 @@ export const jsonPanelSetting: PanelConfigType = {
           id: 'CommonTable',
           label: '奖项列表',
           name: 'Table',
-          type: 'Table',
+          type: 'FormTable',
           props: {
             columns: [
               {
@@ -157,14 +157,6 @@ export const jsonPanelSetting: PanelConfigType = {
                 title: '贺词内容',
                 dataIndex: 'message',
                 align: 'center'
-              }
-            ],
-            componentList: [
-              {
-                id: 'message',
-                label: '贺词内容',
-                name: 'message',
-                type: 'FormTextArea'
               }
             ]
           }

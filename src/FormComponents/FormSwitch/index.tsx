@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'antd';
-import { SwitchProps } from 'antd/lib/switch';
+import type{ SwitchProps } from 'antd/lib/switch';
 import { Wrapper } from './Styled';
 
 export interface FormSwitchProps extends SwitchProps {

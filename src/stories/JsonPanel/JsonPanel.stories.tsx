@@ -1,5 +1,5 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import type { Story, Meta } from '@storybook/react';
 import { JsonPanel } from '../../JsonPanel';
 import type { JsonPanelProps } from '../../JsonPanel';
 import { jsonPanelSetting } from '../../mock/settingConfig';
@@ -15,7 +15,7 @@ import { jsonPanelSetting } from '../../mock/settingConfig';
 
 export default {
   title: 'JsonPanel',
-  component: JsonPanel,
+  component: JsonPanel
   // parameters: {
   //   docs: {
   //     description: {
@@ -47,6 +47,6 @@ Json_Panel.args = {
   panelProps: {
     panelData: {},
     panelConfig: jsonPanelSetting,
-    onChange: onChange,
-  },
+    onChange
+  }
 };

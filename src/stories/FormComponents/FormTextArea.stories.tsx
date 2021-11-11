@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormTextArea from '../../FormComponents/FormTextArea';
 import type { FormTextAreaProps } from '../../FormComponents/FormTextArea';
 

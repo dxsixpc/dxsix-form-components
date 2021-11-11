@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import FormMonacoEditor from '../../FormComponents/FormMonacoEditor';
 import type { FormMonacoEditorProps } from '../../FormComponents/FormMonacoEditor';
 

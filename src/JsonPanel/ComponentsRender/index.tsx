@@ -1,9 +1,10 @@
-import React, { FC, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Form } from 'antd';
 import { getComponent } from '../components';
 import type { ComponentMapType, ComponentType } from '../type';
 import { Wrapper } from './Styled';
 import { isBoolean } from 'lodash';
+
 interface ComponentsRenderProps {
   initialValues?: any;
   componentList: ComponentType[];
@@ -12,7 +13,7 @@ interface ComponentsRenderProps {
 }
 
 // 渲染组件
-export const ComponentsRender: FC<ComponentsRenderProps> = (props) => {
+export const ComponentsRender: React.FC<ComponentsRenderProps> = (props) => {
   const {
     componentList,
     initialValues = {},

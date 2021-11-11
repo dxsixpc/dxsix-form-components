@@ -1,4 +1,5 @@
-import { Story, Meta } from '@storybook/react';
+import React from 'react';
+import type { Story, Meta } from '@storybook/react';
 import moment from 'moment';
 import FormDatePicker from '../../FormComponents/FormDatePicker';
 import type { FormDatePickerProps } from '../../FormComponents/FormDatePicker';

@@ -5,7 +5,9 @@ import 'braft-editor/dist/index.css';
 import { useDebounceFn } from 'ahooks';
 import { Wrapper } from './Styled';
 
-export interface FormRichTextProps extends BraftEditorProps {}
+export interface FormRichTextProps extends BraftEditorProps {
+  props?: any;
+}
 
 // 富文本编辑器
 const FormRichText: React.FC<FormRichTextProps> = (props) => {
@@ -31,6 +33,7 @@ const FormRichText: React.FC<FormRichTextProps> = (props) => {
   return (
     <Wrapper className='my-component'>
       <BraftEditor
+        language='zh'
         value={editorState}
         onChange={handleEditorChange}
         {...rest}

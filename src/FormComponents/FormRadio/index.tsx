@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Radio, List } from 'antd';
-import { RadioProps, RadioChangeEvent } from 'antd/lib/radio';
+import type { RadioProps, RadioChangeEvent } from 'antd/lib/radio';
 import { uniqueId } from 'lodash';
 import { Wrapper } from './Styled';
-import { OptionsConfigType, OptionType } from '../type';
+import type { OptionsConfigType, OptionType } from '../type';
 
 export interface FormRadioProps extends RadioProps {
   size?: 'large' | 'middle' | 'small';
