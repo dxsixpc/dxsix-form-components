@@ -1,5 +1,3 @@
-
-
 ## Intro
 
 This is a component for react.

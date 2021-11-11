@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { Button, message, Modal, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { UploadFile, UploadProps } from 'antd/lib/upload/interface';
+import type { UploadFile, UploadProps } from 'antd/lib/upload/interface';
 import { useToggle } from 'ahooks';
 import { Wrapper } from './Styled';
 import { checkUploadFileFormat } from '../../FormComponents/utils';
@@ -27,7 +27,9 @@ const FormImage: React.FC<FormImageProps> = (props) => {
   let _image: UploadFile | null = null;
   try {
     _image = JSON.parse(value ?? '') as UploadFile;
-  } catch (e) {}
+  } catch (e) {
+    // empty
+  }
 
   const uploadImage = useCallback(
     async (options) => {
@@ -88,12 +90,9 @@ const FormImage: React.FC<FormImageProps> = (props) => {
   const checkImgWidth = (file: UploadFile) => {
     return new Promise<{ width: number; height: number }>((resolve) => {
       const img = new Image();
-      let width;
-      let height;
       img.src = file.thumbUrl || '';
       img.onload = () => {
-        width = img.width;
-        height = img.height;
+        const { width, height } = img;
         resolve({ width, height });
       };
     })

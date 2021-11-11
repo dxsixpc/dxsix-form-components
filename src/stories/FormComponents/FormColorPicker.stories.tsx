@@ -9,12 +9,12 @@ export default {
   argTypes: {
     value: {
       description: '设置颜色',
-      control: 'color',
+      control: 'color'
     },
     onChange: {
-      description: '颜色改变时的回调',
-    },
-  },
+      description: '颜色改变时的回调'
+    }
+  }
 } as Meta;
 
 const Template: Story<FormColorPickerProps> = (args) => (
@@ -29,5 +29,5 @@ const onChange = (value: string) => {
 
 ColorPicker.args = {
   value: '#000000',
-  onChange,
+  onChange
 };

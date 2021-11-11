@@ -1,6 +1,6 @@
 {
   "name": "dxsix-form-components",
-  "version": "0.1.3",
+  "version": "0.1.7",
   "private": false,
   "author": "dxsixpc",
   "license": "MIT",
@@ -24,6 +24,12 @@
     "start": "react-scripts start",
     "rollup-build": "rollup -c -w",
     "build": "microbundle-crl --no-compress --format modern,cjs",
+    "lint": "run-s lint:js lint:style lint:prettier",
+    "lint-staged:js": "eslint --fix --cache --ext .ts,.tsx ./src",
+    "lint:js": "eslint --fix --cache --ext .ts,.tsx ./src",
+    "lint:prettier": "prettier --check --write \"**/*.{tsx,ts,less,md,json}\" --end-of-line auto",
+    "lint:style": "stylelint --aei --fix \"src/**/*.less\" --syntax less",
+    "prepublishOnly": "run-s lint test build",
     "test": "jest --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -78,10 +84,17 @@
     "eslint-plugin-yml": "^0.11.0",
     "jest": "26.6.0",
     "lint-staged": "^11.2.6",
+    "npm-run-all": "^4.1.5",
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-css-modules": "2.2.0",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
     "webpack": "^4.44.2"
   },
   "eslintConfig": {
@@ -123,5 +136,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }

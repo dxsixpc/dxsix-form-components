@@ -33,7 +33,7 @@ export {
   FormSelect,
   FormSwitch,
   FormTable,
-  FormTextArea,
+  FormTextArea
 };
 
 // 通过组件类型选择组件
@@ -54,7 +54,7 @@ export const getFormComponent = (componentType: string) => {
     FormSelect,
     FormSwitch,
     FormTable,
-    FormTextArea,
+    FormTextArea
   };
 
   // 导出对应的组价，没有则默认导出输入框组件

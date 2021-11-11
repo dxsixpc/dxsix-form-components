@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { Button, message, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { UploadFile } from 'antd/lib/upload/interface';
+import type { UploadFile } from 'antd/lib/upload/interface';
 import { Wrapper } from './Styled';
 import { checkUploadFileFormat } from '../../FormComponents/utils';
 import fileApis from './fileApis';
@@ -38,7 +38,9 @@ const FormFile: React.FC<FileFieldProps> = (props) => {
   let _file: UploadFile | null = null;
   try {
     _file = JSON.parse(value ?? '') as UploadFile;
-  } catch (e) {}
+  } catch (e) {
+    // empty
+  }
 
   const uploadFile = useCallback(
     async (options) => {

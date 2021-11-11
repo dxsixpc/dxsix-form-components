@@ -5,7 +5,7 @@ import type { FormMonacoEditorProps } from '../../FormComponents/FormMonacoEdito
 
 export default {
   title: 'FormComponents/FormMonacoEditor',
-  component: FormMonacoEditor,
+  component: FormMonacoEditor
 } as Meta;
 
 const Template: Story<FormMonacoEditorProps> = (args) => (
@@ -16,5 +16,5 @@ export const MonacoEditor = Template.bind({});
 
 MonacoEditor.args = {
   height: '690px',
-  language: 'javascript',
+  language: 'javascript'
 };
