@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
-import { JsonPanel } from '../../JsonPanel';
-import type { JsonPanelProps } from '../../JsonPanel';
+import { FormJsonPanel } from '../../FormJsonPanel';
+import type { FormJsonPanelProps } from '../../FormJsonPanel';
 import { jsonPanelSetting } from '../../mock/settingConfig';
 // import {
 //   Title,
@@ -14,8 +14,8 @@ import { jsonPanelSetting } from '../../mock/settingConfig';
 // } from '@storybook/addon-docs/blocks';
 
 export default {
-  title: 'JsonPanel',
-  component: JsonPanel
+  title: 'FormJsonPanel',
+  component: FormJsonPanel
   // parameters: {
   //   docs: {
   //     description: {
@@ -34,7 +34,9 @@ export default {
   // }
 } as Meta;
 
-const Template: Story<JsonPanelProps> = (args) => <JsonPanel {...args} />;
+const Template: Story<FormJsonPanelProps> = (args) => (
+  <FormJsonPanel {...args} />
+);
 
 export const Json_Panel = Template.bind({});
 
@@ -48,5 +50,6 @@ Json_Panel.args = {
     panelData: {},
     panelConfig: jsonPanelSetting,
     onChange
-  }
+  },
+  monacoLanguage: 'json'
 };

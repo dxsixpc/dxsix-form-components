@@ -13,7 +13,7 @@ export interface PanelPropsType extends PanelBaseProps {
   onClose?: () => void;
 }
 
-export interface JsonPanelProps {
+export interface FormJsonPanelProps {
   // 面板类型
   panelType: PanelType;
   // 面板参数
@@ -23,7 +23,7 @@ export interface JsonPanelProps {
 }
 
 // 根据类型返回对应的面板
-export const JsonPanel: React.FC<JsonPanelProps> = (props) => {
+export const FormJsonPanel: React.FC<FormJsonPanelProps> = (props) => {
   const { panelType, panelProps, monacoLanguage } = props;
   const {
     onBig,

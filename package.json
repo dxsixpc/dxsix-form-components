@@ -1,6 +1,6 @@
 {
   "name": "dxsix-form-components",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "author": "dxsixpc",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "typescript"
   ],
   "scripts": {
-    "start": "react-scripts start",
+    "start": "storybook",
     "rollup-build": "rollup -c -w",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "lint": "run-s lint:js lint:style lint:prettier",
@@ -37,17 +37,16 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
+    "@monaco-editor/react": "^4.3.1",
     "ahooks": "^2.10.9",
     "antd": "^4.16.13",
     "axios": "^0.21.4",
     "braft-editor": "^2.3.9",
     "lodash": "^4.17.21",
     "microbundle-crl": "^0.13.11",
-    "monaco-editor-webpack-plugin": "^4.2.0",
     "react": "^17.0.2",
     "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
-    "react-monaco-editor": "^0.45.0",
     "react-scripts": "4.0.3",
     "react-sortablejs": "1.5.1",
     "sortablejs": "^1.14.0",

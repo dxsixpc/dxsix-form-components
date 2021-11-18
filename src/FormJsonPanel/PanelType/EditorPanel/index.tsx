@@ -15,7 +15,7 @@ const EditorPanel: React.FC<EditorPanelProps> = (props) => {
   const {
     panelData,
     panelConfig,
-    monacoLanguage,
+    monacoLanguage = 'json',
     componentMap,
     onEditorChange
   } = props;
@@ -33,7 +33,7 @@ const EditorPanel: React.FC<EditorPanelProps> = (props) => {
     setInitialValues({ ...initialValues, ...changedValues });
   };
 
-  const onMonacoChange = (value: string) => {
+  const onMonacoChange = (value?: string) => {
     onEditorChange(toJson(value));
     setEditorValue(toJson(value));
   };

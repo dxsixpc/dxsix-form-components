@@ -1,4 +1,4 @@
-import type { PanelConfigType } from '../JsonPanel';
+import type { PanelConfigType } from '../FormJsonPanel';
 
 export const jsonPanelSetting: PanelConfigType = {
   id: 'Tabs',
