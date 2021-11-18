@@ -21,7 +21,7 @@
     "typescript"
   ],
   "scripts": {
-    "start": "storybook",
+    "start": "run-s storybook",
     "rollup-build": "rollup -c -w",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "lint": "run-s lint:js lint:style lint:prettier",
