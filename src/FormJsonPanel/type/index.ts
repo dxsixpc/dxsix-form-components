@@ -1,4 +1,5 @@
 import type { OptionsConfigType } from '../../FormComponents';
+import type { FormItemProps } from 'antd/lib/form';
 
 // 可嵌套的条件表达式
 export interface Expresssion {
@@ -33,19 +34,13 @@ export interface ImageType {
 }
 
 // 每个组件的类型Í
-export interface ComponentType {
+export interface ComponentType extends FormItemProps {
   // 每个组件的唯一标识id
   id: string;
-  // 每个组件显示的标题
-  label: string;
   // 组件对应的name，单个表单中的区分组件的唯一标识，语义化,与接口对应属性字段相同
   name: string;
   // 组件的类型+值的类型
   type: string;
-  // 此组件的值
-  value?: any;
-  // 选择器: 若组件的值是style等。用于选择具体某个dom
-  selector?: string;
   // 组件的参数集合，props里的内容会传到组件里
   props?: {
     // 占位提示语
@@ -53,12 +48,12 @@ export interface ComponentType {
     // 选项组件的配置
     optionsConfig?: OptionsConfigType;
     // 自定义属性
-    [key: string]: Any;
+    [key: string]: any;
   };
-  // 条件表达式
-  condition?: string;
   // 可嵌套的子组件
   children?: ComponentType[];
+  // 自定义属性
+  [key: string]: any;
 }
 
 // 配置面板json子节点接口

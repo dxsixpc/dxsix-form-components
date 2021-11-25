@@ -1,4 +1,5 @@
 import type { PanelConfigType } from '../FormJsonPanel';
+import type { RuleObject } from 'antd/lib/form';
 
 export const jsonPanelSetting: PanelConfigType = {
   id: 'Tabs',
@@ -13,6 +14,18 @@ export const jsonPanelSetting: PanelConfigType = {
           label: '活动标题',
           name: 'title',
           type: 'FormInput',
+          rules: [
+            { required: true, message: '不能为空' },
+            {
+              validator: (_rule: RuleObject, value: any) => {
+                if (value === '标题') {
+                  return Promise.reject(new Error('标题不能设置为标题'));
+                } else {
+                  return Promise.resolve(new Error());
+                }
+              }
+            }
+          ],
           props: {
             placeholder: '请输入活动标题'
           }
