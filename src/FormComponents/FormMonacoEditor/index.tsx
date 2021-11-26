@@ -35,7 +35,7 @@ const FormMonacoEditor: React.FC<MonacoEditorWidgetProps> = (props) => {
   const { run } = useDebounceFn(onChange || onEditorChange, debounceOptions);
 
   return (
-    <Wrapper className='MonacoEditorWidget'>
+    <Wrapper className='MonacoEditor'>
       <Editor
         defaultLanguage={defaultLanguage}
         theme={theme}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 import EditorPanel from './EditorPanel';
 import SettingPanel from './SettingPanel';
@@ -34,31 +34,26 @@ export const FormJsonPanel: React.FC<FormJsonPanelProps> = (props) => {
     panelConfig,
     componentMap
   } = panelProps;
-  const [panelJson, setPanelJson] = useState<string>('');
-  const [returnValue, setReturnValue] = useState<any>({});
-  const [initialValues, setInitialValues] = useState<AnyObject>(
-    panelData || {}
-  );
-  const { Content } = Layout;
+  let panelJson = '';
+  let returnValue: AnyObject = {};
+  let initialValues: AnyObject = panelData || {};
 
+  // 点击提交按钮时
   const onSubmit = () => {
-    if (panelType === 'EditorPanel') {
-      onChange && onChange(panelJson);
-    } else if (panelType === 'SettingPanel') {
-      onChange && onChange(returnValue);
-    }
+    const onChangeValue = panelType === 'EditorPanel' ? panelJson : returnValue;
+    onChange && onChange(onChangeValue);
     onClose && onClose();
   };
 
   // 编辑面板数据改变时
   const onEditorChange = (value: string) => {
-    setPanelJson(value);
+    panelJson = value;
   };
 
   // 配置面板数据改变时
-  const onSettingChange = (value: any) => {
-    setReturnValue({ ...returnValue, ...value });
-    setInitialValues({ ...initialValues, ...value });
+  const onSettingChange = (changeValue: any) => {
+    returnValue = { ...returnValue, ...changeValue };
+    initialValues = { ...initialValues, ...changeValue };
   };
 
   return (
@@ -70,7 +65,7 @@ export const FormJsonPanel: React.FC<FormJsonPanelProps> = (props) => {
           onSmall={onSmall}
           onClose={onClose}
         />
-        <Content>
+        <Layout.Content>
           {panelType === 'EditorPanel' ? (
             <EditorPanel
               panelData={panelData}
@@ -87,7 +82,7 @@ export const FormJsonPanel: React.FC<FormJsonPanelProps> = (props) => {
               onSettingChange={onSettingChange}
             />
           )}
-        </Content>
+        </Layout.Content>
         <PanelFooter onSubmit={onSubmit} onClose={onClose} />
       </Layout>
     </Wrapper>
