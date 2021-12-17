@@ -1,11 +1,11 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
-import FormButton from '../../FormComponents/FormButton';
-import type { FormButtonProps } from '../../FormComponents/FormButton';
+import ButtonWidget from '../../Widgets/ButtonWidget';
+import type { ButtonWidgetProps } from '../../Widgets/ButtonWidget';
 
 export default {
-  title: 'FormComponents/FormButton',
-  component: FormButton,
+  title: 'Widgets/ButtonWidget',
+  component: ButtonWidget,
   argTypes: {
     size: {
       description: '设置按钮大小',
@@ -98,7 +98,7 @@ export default {
   }
 } as Meta;
 
-const Template: Story<FormButtonProps> = (args) => <FormButton {...args} />;
+const Template: Story<ButtonWidgetProps> = (args) => <ButtonWidget {...args} />;
 
 export const Button = Template.bind({});
 

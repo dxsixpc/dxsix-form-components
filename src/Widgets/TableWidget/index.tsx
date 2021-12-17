@@ -9,7 +9,7 @@ export interface RecordType {
   [key: string]: any;
 }
 
-export interface FormTableProps extends TableProps<RecordType> {
+export interface TableWidgetProps extends TableProps<RecordType> {
   // 表格每行的数据列表
   value?: RecordType[];
   // 表格字段
@@ -17,7 +17,7 @@ export interface FormTableProps extends TableProps<RecordType> {
 }
 
 // 数据表格
-const FormTable: React.FC<FormTableProps> = (props) => {
+const TableWidget: React.FC<TableWidgetProps> = (props) => {
   const { value = [], columns = [], ...rest } = props;
 
   return (
@@ -32,4 +32,4 @@ const FormTable: React.FC<FormTableProps> = (props) => {
   );
 };
 
-export default FormTable;
+export default TableWidget;

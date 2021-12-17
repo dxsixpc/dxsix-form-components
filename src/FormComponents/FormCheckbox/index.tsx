@@ -4,11 +4,11 @@ import type { CheckboxGroupProps } from 'antd/lib/checkbox';
 import type { CheckboxValueType } from 'antd/lib/checkbox/Group';
 import { uniqueId } from 'lodash';
 import { Wrapper } from './Styled';
-import type { OptionsConfigType, OptionType } from '../type';
+import type { OptionsConfigType, OptionType } from '../../type';
 
 export interface FormCheckboxProps extends CheckboxGroupProps {
   size?: 'large' | 'middle' | 'small';
-  optionsConfig: OptionsConfigType;
+  optionsConfig: OptionsConfigType<'Checkbox'>;
   onChange?: (value: CheckboxValueType[]) => void;
 }
 

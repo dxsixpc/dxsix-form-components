@@ -3,10 +3,10 @@ import { Select } from 'antd';
 import type { SelectProps } from 'antd/lib/select';
 import { uniqueId } from 'lodash';
 import { Wrapper } from './Styled';
-import type { OptionsConfigType, OptionType } from '../type';
+import type { OptionsConfigType, OptionType } from '../../type';
 
 export interface FormSelectProps<T> extends SelectProps<T> {
-  optionsConfig: OptionsConfigType;
+  optionsConfig: OptionsConfigType<'Radio'>;
   onChange: (value: T) => void;
 }
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import type { Story, Meta } from '@storybook/react';
-import { FormJsonPanel } from '../../FormJsonPanel';
-import type { FormJsonPanelProps } from '../../FormJsonPanel';
+import { JsonPanel } from '../../JsonPanel';
+import type { JsonPanelProps } from '../../JsonPanel';
 import { jsonPanelSetting } from '../../mock/settingConfig';
+
 // import {
 //   Title,
 //   Subtitle,
@@ -14,8 +15,8 @@ import { jsonPanelSetting } from '../../mock/settingConfig';
 // } from '@storybook/addon-docs/blocks';
 
 export default {
-  title: 'FormJsonPanel',
-  component: FormJsonPanel
+  title: 'JsonPanel',
+  component: JsonPanel
   // parameters: {
   //   docs: {
   //     description: {
@@ -34,20 +35,18 @@ export default {
   // }
 } as Meta;
 
-const Template: Story<FormJsonPanelProps> = (args) => (
-  <FormJsonPanel {...args} />
-);
+const Template: Story<JsonPanelProps> = (args) => <JsonPanel {...args} />;
 
-export const Json_Panel = Template.bind({});
+export const JsonPanelFC = Template.bind({});
 
 const onChange = (value: any) => {
   console.log(value);
 };
 
-Json_Panel.args = {
+JsonPanelFC.args = {
   panelType: 'EditorPanel',
   panelProps: {
-    panelData: {},
+    panelData: { need_user_info: true, name: '姓名' },
     panelConfig: jsonPanelSetting,
     onChange
   },

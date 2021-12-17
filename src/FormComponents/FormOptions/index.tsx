@@ -1,187 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import type { SortableEvent } from 'sortablejs';
-import ReactSortable from 'react-sortablejs';
-import Option from './Option';
-import type { Options } from './Option';
-import { CanvasStyle } from './Styled';
-import produce from 'immer';
-
-export interface OptionsConfig {
-  type: 'Radio' | 'Checkbox';
-  defaultValue: string[] | number[] | string;
-  options: Options[];
-}
+import { uniqueId } from 'lodash';
+import OptionsContainer from './OptionsContainer';
+import type { OptionType, OptionsConfigType } from '../../type';
+import { Wrapper } from './Styled';
 
 export interface FormOptionsProps {
-  fieldId?: string;
-  value?: OptionsConfig;
-  optionsConfig: OptionsConfig;
-  onChange: (optionsConfig: OptionsConfig) => void;
+  value?: OptionsConfigType<'allType'>;
+  optionsConfig: OptionsConfigType<'allType'>;
+  onChange: (optionsConfig: OptionsConfigType<'allType'>) => void;
 }
 
 export const FormOptions: React.FC<FormOptionsProps> = (props) => {
-  const { value, fieldId, onChange } = props;
-  const [optionsConfig, setOptionsConfig] = useState<OptionsConfig>(
-    value || props.optionsConfig
-  );
-  const [visible, setVisible] = useState(true);
+  const { value, onChange } = props;
+  const [optionsConfig, setOptionsConfig] = useState<
+    OptionsConfigType<'allType'>
+  >(value || props.optionsConfig);
 
-  const setChangeValue = (newOptions: Options[]) => {
-    if (optionsConfig.type === 'Radio') {
-      let defaultValue = '';
-      newOptions.forEach((option: Options) => {
-        if (option.checked) {
+  const onOptionsConfigChange = (
+    newOptionsConfig: OptionsConfigType<'allType'>
+  ) => {
+    const { options } = newOptionsConfig;
+    // 设置选中的默认值
+    let defaultValue: any = optionsConfig.type === 'Checkbox' ? [] : '';
+    options.forEach((option: OptionType) => {
+      if (option.checked) {
+        if (
+          optionsConfig.type === 'Radio' ||
+          optionsConfig.type === 'trueFalse'
+        ) {
           defaultValue = option.value;
-        }
-      });
-      setOptionsConfig({ ...optionsConfig, defaultValue, options: newOptions });
-      onChange({ ...optionsConfig, defaultValue, options: newOptions });
-    } else if (optionsConfig.type === 'Checkbox') {
-      const defaultValue: string[] = [];
-      newOptions.forEach((option: Options) => {
-        if (option.checked) {
+        } else if (optionsConfig.type === 'Checkbox') {
           defaultValue.push(option.value);
         }
-      });
-      setOptionsConfig({ ...optionsConfig, defaultValue, options: newOptions });
-      onChange({ ...optionsConfig, defaultValue, options: newOptions });
-    }
-  };
-
-  // 选项值改变时
-  const onOptionChange = (newOption: Options) => {
-    const newOptions = optionsConfig?.options.map(
-      (option: Options, idx: number) => ({
-        ...option,
-        index: idx,
-        value: idx === newOption.index ? newOption.value : option.value,
-        label: idx === newOption.index ? newOption.label : option.label
-      })
-    );
-    setChangeValue(newOptions);
-  };
-
-  // 选中项改变时
-  const onCheckedChange = (index: number) => {
-    const newOptions = optionsConfig?.options.map(
-      (option: Options, idx: number) => ({
-        ...option,
-        index: idx,
-        checked:
-          optionsConfig.type === 'Radio'
-            ? idx === index
-              ? !option.checked
-              : false
-            : idx === index
-            ? !option.checked
-            : option.checked
-      })
-    );
-    setChangeValue(newOptions);
-  };
-
-  // 点击添加按钮时
-  const onClickAddBtn = () => {
-    const newOptions = [
-      ...optionsConfig.options,
-      {
-        label: `选项${optionsConfig.options.length + 1}`,
-        value: `选项${optionsConfig.options.length + 1}`,
-        checked: false,
-        index: optionsConfig.options.length + 1
       }
-    ];
-    setChangeValue(newOptions);
+    });
+    setOptionsConfig({ ...newOptionsConfig, defaultValue });
+    onChange({ ...newOptionsConfig, defaultValue });
   };
 
-  // 点击删除按钮时
-  const onClickRemoveBtn = (index: number) => {
-    if (optionsConfig.options.length <= 1) return;
-    const draftOptions = produce(optionsConfig.options, (draft: Options[]) => {
-      draft.splice(index, 1);
+  // 添加选项
+  const addOption = () => {
+    const newOptions = optionsConfig.options.concat({
+      id: uniqueId('op'),
+      label: `选项${optionsConfig.options.length + 1}`,
+      value: `选项${optionsConfig.options.length + 1}`,
+      checked: false
     });
-    const newOptions = draftOptions.map((option: Options, idx: number) => ({
-      ...option,
-      index: idx
-    }));
-    setVisible(false);
-    setTimeout(() => {
-      setVisible(true);
+    onOptionsConfigChange({
+      ...optionsConfig,
+      options: newOptions
     });
-    setChangeValue(newOptions);
   };
-
-  // 拖动排序时
-  const onSortableChange = (event: SortableEvent) => {
-    const { oldIndex = 0, newIndex = 0 } = event;
-    const draftOptions = produce(optionsConfig.options, (draft: Options[]) => {
-      const [Item] = draft.splice(oldIndex, 1);
-      draft.splice(newIndex, 0, Item);
-    });
-    const newOptions = draftOptions.map((option: Options, idx: number) => ({
-      ...option,
-      index: idx
-    }));
-    setOptionsConfig({ ...optionsConfig, options: newOptions });
-    setVisible(false);
-    setVisible(true);
-    onChange({ ...optionsConfig, options: newOptions });
-  };
-
-  useEffect(() => {
-    setOptionsConfig(value || props.optionsConfig);
-  }, [props, value]);
-
-  useEffect(() => {
-    setVisible(false);
-    setTimeout(() => {
-      setVisible(true);
-    });
-  }, [fieldId]);
 
   return (
-    (visible || null) && (
-      <CanvasStyle>
-        <ReactSortable
-          options={{
-            group: {
-              name: 'options'
-            },
-            handle: '.dropMenu',
-            sort: true,
-            animation: 150
-          }}
-          onChange={(_list: any, _sortable: any, event: SortableEvent) => {
-            onSortableChange(event);
-          }}
-        >
-          {optionsConfig?.options?.map((option: Options, index: number) => {
-            return (
-              <Option
-                key={index}
-                option={option}
-                index={index}
-                type={optionsConfig.type}
-                onClickRemoveBtn={(index: number) => onClickRemoveBtn(index)}
-                onCheckedChange={(index: number) => onCheckedChange(index)}
-                onOptionChange={(newOption: Options) =>
-                  onOptionChange(newOption)
-                }
-              />
-            );
-          })}
-          <Button
-            type='text'
-            style={{ color: '#00bcd4' }}
-            onClick={onClickAddBtn}
-          >
-            <PlusOutlined /> 添加选项
-          </Button>
-        </ReactSortable>
-      </CanvasStyle>
-    )
+    <Wrapper>
+      <OptionsContainer
+        optionsConfig={optionsConfig}
+        onOptionsConfigChange={onOptionsConfigChange}
+      />
+      <Button type='text' style={{ color: '#00bcd4' }} onClick={addOption}>
+        <PlusOutlined /> 添加选项
+      </Button>
+    </Wrapper>
   );
 };
 

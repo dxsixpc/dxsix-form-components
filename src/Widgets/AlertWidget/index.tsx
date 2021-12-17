@@ -3,9 +3,9 @@ import { Alert } from 'antd';
 import type { AlertProps } from 'antd/lib/alert';
 import { Wrapper } from './Styled';
 
-export interface FormAlertProps extends AlertProps {}
+export interface AlertWidgetProps extends AlertProps {}
 
-const FormAlert: React.FC<FormAlertProps> = (props) => {
+const AlertWidget: React.FC<AlertWidgetProps> = (props) => {
   const { ...rest } = props;
   return (
     <Wrapper>
@@ -14,4 +14,4 @@ const FormAlert: React.FC<FormAlertProps> = (props) => {
   );
 };
 
-export default FormAlert;
+export default AlertWidget;

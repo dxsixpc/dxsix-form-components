@@ -1,37 +1,46 @@
 import React from 'react';
 import { Input, Radio, Checkbox, Space, Tooltip } from 'antd';
 import { CloseCircleOutlined, MenuOutlined } from '@ant-design/icons';
-import { OptionItem } from './Styled';
-
-export interface Options {
-  label: string;
-  value: string;
-  checked: boolean;
-  index: number;
-}
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import { OptionWrapper } from './Styled';
+import type { OptionType, OptionSelectType } from '../../type';
 
 export interface OptionProps {
-  type: 'Radio' | 'Checkbox';
-  option: Options;
-  index: number;
-  onOptionChange: (option: Options) => void;
-  onClickRemoveBtn: (index: number) => void;
-  onCheckedChange: (index: number) => void;
+  type: OptionSelectType;
+  option: OptionType;
+  onOptionChange: (option: OptionType) => void;
+  onCheckedChange: (id: OptionType['id']) => void;
+  onRemoveOption: (id: OptionType['id']) => void;
 }
 
+// 单个选项
 const Option: React.FC<OptionProps> = (props) => {
   const {
-    option,
-    index,
     type,
+    option,
     onOptionChange,
-    onClickRemoveBtn,
-    onCheckedChange
+    onCheckedChange,
+    onRemoveOption
   } = props;
+  const { id, checked, label } = option;
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition
+  } = useSortable({ id: option.id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition: transition ?? ''
+  };
+
   return (
-    <OptionItem>
+    <OptionWrapper ref={setNodeRef} style={style} {...attributes}>
       <Input
-        defaultValue={option.label}
+        defaultValue={label}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
           onOptionChange({
             ...option,
@@ -41,37 +50,34 @@ const Option: React.FC<OptionProps> = (props) => {
         }}
         prefix={
           <MenuOutlined
-            className='dropMenu'
+            {...listeners}
             style={{ cursor: 'pointer', marginRight: '10px' }}
           />
         }
         suffix={
           <Space>
-            <Tooltip placement='top' title='默认选中项'>
+            <Tooltip placement='top' title='默认选中项' mouseEnterDelay={2}>
               {type === 'Checkbox' ? (
                 <Checkbox
-                  checked={option.checked}
-                  onClick={() => onCheckedChange(option.index)}
+                  checked={checked}
+                  onClick={() => onCheckedChange(id)}
                 />
               ) : (
-                <Radio
-                  checked={option.checked}
-                  onClick={() => onCheckedChange(option.index)}
-                />
+                <Radio checked={checked} onClick={() => onCheckedChange(id)} />
               )}
             </Tooltip>
-            <Tooltip placement='top' title='删除选项'>
+            <Tooltip placement='top' title='删除当前项' mouseEnterDelay={2}>
               <CloseCircleOutlined
                 style={{ cursor: 'pointer', color: 'rgba(128,128,128.0.5)' }}
-                onClick={() => onClickRemoveBtn(index)}
+                onClick={() => onRemoveOption(id)}
               />
             </Tooltip>
           </Space>
         }
         bordered={false}
-        maxLength={50}
+        // maxLength={50}
       />
-    </OptionItem>
+    </OptionWrapper>
   );
 };
 

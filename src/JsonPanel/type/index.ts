@@ -1,4 +1,4 @@
-import type { OptionsConfigType } from '../../FormComponents';
+import type { OptionsConfigType } from '../../type';
 import type { FormItemProps } from 'antd/lib/form';
 
 // 可嵌套的条件表达式
@@ -46,7 +46,7 @@ export interface ComponentType extends FormItemProps {
     // 占位提示语
     placeholder?: string;
     // 选项组件的配置
-    optionsConfig?: OptionsConfigType;
+    optionsConfig?: OptionsConfigType<'allType'>;
     // 自定义属性
     [key: string]: any;
   };

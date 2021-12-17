@@ -1,13 +1,14 @@
+import type { FC } from 'react';
 import React from 'react';
 import { Button } from 'antd';
 import type { ButtonProps } from 'antd/lib/button';
 import { Wrapper } from './Styled';
 
-export interface FormButtonProps extends ButtonProps {
+export interface ButtonWidgetProps extends ButtonProps {
   buttonText?: string;
 }
 
-const FormButton: React.FC<FormButtonProps> = (props) => {
+const ButtonWidget: FC<ButtonWidgetProps> = (props) => {
   const { buttonText = '按钮', ...rest } = props;
 
   return (
@@ -17,4 +18,4 @@ const FormButton: React.FC<FormButtonProps> = (props) => {
   );
 };
 
-export default FormButton;
+export default ButtonWidget;

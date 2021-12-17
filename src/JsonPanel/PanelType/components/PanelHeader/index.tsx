@@ -43,12 +43,10 @@ const PanelHeader: React.FC<PanelHeaderProps> = (props) => {
           {panelType === 'EditorPanel' ? '编辑面板' : '配置面板'}
         </div>
         <div className='iconWidget'>
-          {scale ? (
-            <MinusOutlined onClick={onShowSmall} />
-          ) : (
-            <FullscreenOutlined onClick={onShowBig} />
-          )}
-          <CloseOutlined onClick={onClose} />
+          {scale
+            ? onSmall && <MinusOutlined onClick={onShowSmall} />
+            : onBig && <FullscreenOutlined onClick={onShowBig} />}
+          {onClose && <CloseOutlined onClick={onClose} />}
         </div>
       </Header>
     </Wrapper>

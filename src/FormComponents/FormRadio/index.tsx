@@ -3,11 +3,11 @@ import { Radio, List } from 'antd';
 import type { RadioProps, RadioChangeEvent } from 'antd/lib/radio';
 import { uniqueId } from 'lodash';
 import { Wrapper } from './Styled';
-import type { OptionsConfigType, OptionType } from '../type';
+import type { OptionsConfigType, OptionType } from '../../type';
 
 export interface FormRadioProps extends RadioProps {
   size?: 'large' | 'middle' | 'small';
-  optionsConfig: OptionsConfigType;
+  optionsConfig: OptionsConfigType<'Radio'>;
   onChange?: (value: RadioChangeEvent) => void;
 }
 
