@@ -12,7 +12,7 @@ export interface FormOptionsProps {
   onChange: (optionsConfig: OptionsConfigType<'allType'>) => void;
 }
 
-export const FormOptions: React.FC<FormOptionsProps> = (props) => {
+const FormOptions: React.FC<FormOptionsProps> = (props) => {
   const { value, onChange } = props;
   const [optionsConfig, setOptionsConfig] = useState<
     OptionsConfigType<'allType'>

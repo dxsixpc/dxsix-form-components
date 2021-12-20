@@ -12,7 +12,7 @@ export const jsonPanelSetting: PanelConfigType = {
         {
           id: 'warning',
           name: 'warning',
-          type: 'AlertWidgeta',
+          type: 'AlertWidget',
           props: {
             message: '这里是一条警告提示信息',
             type: 'warning',
@@ -23,7 +23,7 @@ export const jsonPanelSetting: PanelConfigType = {
           id: 'title',
           label: '活动标题',
           name: 'title',
-          type: 'FormInputa',
+          type: 'FormInput',
           rules: [
             { required: true, message: '不能为空' },
             {
@@ -167,7 +167,7 @@ export const jsonPanelSetting: PanelConfigType = {
           id: 'CommonTable',
           label: '奖项列表',
           name: 'Table',
-          type: 'FormTable',
+          type: 'TableWidget',
           props: {
             columns: [
               {

@@ -4,6 +4,13 @@ import type { EditorProps, OnChange } from '@monaco-editor/react';
 import { useDebounceFn } from 'ahooks';
 import { Wrapper } from './Styled';
 
+// 加载本地的monaco-editor
+// loader.config({
+//   paths: {
+//     vs: 'monaco-editor/min/vs'
+//   }
+// });
+
 // 防抖配置类型
 export interface DebounceOptions {
   wait?: number;
@@ -11,12 +18,12 @@ export interface DebounceOptions {
   trailing?: boolean;
 }
 
-export interface MonacoEditorWidgetProps extends EditorProps {
+export interface FormMonacoEditorProps extends EditorProps {
   // 防抖延迟时间（毫秒）
   debounceOptions?: DebounceOptions;
 }
 
-const FormMonacoEditor: React.FC<MonacoEditorWidgetProps> = (props) => {
+const FormMonacoEditor: React.FC<FormMonacoEditorProps> = (props) => {
   const {
     debounceOptions = { wait: 300 },
     value = '',
