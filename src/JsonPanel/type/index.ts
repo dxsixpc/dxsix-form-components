@@ -1,7 +1,6 @@
 import type { OptionsConfigType } from '../../type';
 import type { FormItemProps } from 'antd/lib/form';
 import type {
-  FormType,
   FormCheckboxProps,
   FormColorPickerProps,
   FormDatePickerProps,
@@ -17,14 +16,29 @@ import type {
   FormTextAreaProps
 } from '../../FormComponents';
 import type {
-  WidgetType,
   AlertWidgetProps,
   ButtonWidgetProps,
   TableWidgetProps
 } from '../../Widgets/';
 
 // 所有的可渲染组件类型
-export type FormWidgetType = FormType | WidgetType;
+export type FormWidgetType =
+  | 'FormCheckbox'
+  | 'FormColorPicker'
+  | 'FormDatePicker'
+  | 'FormInput'
+  | 'FormInputNumber'
+  | 'FormMonacoEditor'
+  | 'FormOptions'
+  | 'FormRadio'
+  | 'FormRangePicker'
+  | 'FormRichText'
+  | 'FormSelect'
+  | 'FormSwitch'
+  | 'FormTextArea'
+  | 'AlertWidget'
+  | 'ButtonWidget'
+  | 'TableWidget';
 
 // 所有组件的props类型
 export interface FormWidgetPropsType {

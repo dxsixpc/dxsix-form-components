@@ -6,6 +6,18 @@ import OptionsContainer from './OptionsContainer';
 import type { OptionType, OptionsConfigType } from '../../type';
 import { Wrapper } from './Styled';
 
+const defaultOptionsConfig: OptionsConfigType<'Radio'> = {
+  type: 'Radio',
+  defaultValue: '1',
+  options: [
+    { label: '1', value: '1', checked: true, id: '0' },
+    { label: '2', value: '2', checked: false, id: '1' },
+    { label: '3', value: '3', checked: false, id: '2' },
+    { label: '4', value: '4', checked: false, id: '3' },
+    { label: '5', value: '5', checked: false, id: '4' }
+  ]
+};
+
 export interface FormOptionsProps {
   value?: OptionsConfigType<'allType'>;
   optionsConfig: OptionsConfigType<'allType'>;
@@ -16,7 +28,7 @@ const FormOptions: React.FC<FormOptionsProps> = (props) => {
   const { value, onChange } = props;
   const [optionsConfig, setOptionsConfig] = useState<
     OptionsConfigType<'allType'>
-  >(value || props.optionsConfig);
+  >(value || props.optionsConfig || defaultOptionsConfig);
 
   const onOptionsConfigChange = (
     newOptionsConfig: OptionsConfigType<'allType'>

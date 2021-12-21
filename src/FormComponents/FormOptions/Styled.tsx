@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  input {
+    max-width: 100% !important;
+  }
+`;
 
 export const OptionWrapper = styled.div`
   display: flex;

@@ -6,8 +6,6 @@ import type { ButtonWidgetProps } from './ButtonWidget';
 import TableWidget from './TableWidget';
 import type { TableWidgetProps } from './TableWidget';
 
-export type WidgetType = 'AlertWidget' | 'ButtonWidget' | 'TableWidget';
-
 // 逐个导出所有widget
 export { AlertWidget, ButtonWidget, TableWidget };
 

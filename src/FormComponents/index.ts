@@ -28,21 +28,6 @@ import FormTextArea from './FormTextArea';
 import type { FormTextAreaProps } from './FormTextArea';
 export * from './utils';
 
-export type FormType =
-  | 'FormCheckbox'
-  | 'FormColorPicker'
-  | 'FormDatePicker'
-  | 'FormInput'
-  | 'FormInputNumber'
-  | 'FormMonacoEditor'
-  | 'FormOptions'
-  | 'FormRadio'
-  | 'FormRangePicker'
-  | 'FormRichText'
-  | 'FormSelect'
-  | 'FormSwitch'
-  | 'FormTextArea';
-
 export {
   FormCheckbox,
   FormColorPicker,

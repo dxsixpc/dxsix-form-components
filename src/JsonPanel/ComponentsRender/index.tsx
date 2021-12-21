@@ -4,7 +4,6 @@ import { getComponent } from '../components';
 import type { ComponentMapType, ComponentType } from '../type';
 import { Wrapper } from './Styled';
 import { isBoolean } from 'lodash';
-import { formatProps } from './utils';
 
 interface ComponentsRenderProps {
   initialValues?: any;
@@ -57,7 +56,6 @@ export const ComponentsRender: React.FC<ComponentsRenderProps> = (props) => {
           >
             <JsonPanelComponent
               componentprops={component}
-              {...formatProps(initialValues)}
               {...component.props}
             />
           </Form.Item>
