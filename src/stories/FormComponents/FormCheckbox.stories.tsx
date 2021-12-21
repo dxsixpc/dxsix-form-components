@@ -23,9 +23,9 @@ Checkbox.args = {
     type: 'Checkbox',
     defaultValue: ['middle'],
     options: [
-      { label: '大', value: 'large', checked: false, id:'0' },
-      { label: '中', value: 'middle', checked: true, id:'1' },
-      { label: '小', value: 'small', checked: false, id:'2' }
+      { label: '大', value: 'large', checked: false, id: '0' },
+      { label: '中', value: 'middle', checked: true, id: '1' },
+      { label: '小', value: 'small', checked: false, id: '2' }
     ]
   }
 };

@@ -16,21 +16,11 @@ export interface OptionProps {
 
 // 单个选项
 const Option: React.FC<OptionProps> = (props) => {
-  const {
-    type,
-    option,
-    onOptionChange,
-    onCheckedChange,
-    onRemoveOption
-  } = props;
+  const { type, option, onOptionChange, onCheckedChange, onRemoveOption } =
+    props;
   const { id, checked, label } = option;
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition
-  } = useSortable({ id: option.id });
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: option.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
