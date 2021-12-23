@@ -19,9 +19,9 @@ const defaultOptionsConfig: OptionsConfigType<'Radio'> = {
 };
 
 export interface FormOptionsProps {
-  value?: OptionsConfigType<'allType'>;
-  optionsConfig: OptionsConfigType<'allType'>;
-  onChange: (optionsConfig: OptionsConfigType<'allType'>) => void;
+  value?: OptionsConfigType;
+  optionsConfig: OptionsConfigType;
+  onChange: (optionsConfig: OptionsConfigType) => void;
 }
 
 const FormOptions: React.FC<FormOptionsProps> = (props) => {
@@ -30,18 +30,13 @@ const FormOptions: React.FC<FormOptionsProps> = (props) => {
     OptionsConfigType<'allType'>
   >(value || props.optionsConfig || defaultOptionsConfig);
 
-  const onOptionsConfigChange = (
-    newOptionsConfig: OptionsConfigType<'allType'>
-  ) => {
+  const onOptionsConfigChange = (newOptionsConfig: OptionsConfigType) => {
     const { options } = newOptionsConfig;
     // 设置选中的默认值
     let defaultValue: any = optionsConfig.type === 'Checkbox' ? [] : '';
     options.forEach((option: OptionType) => {
       if (option.checked) {
-        if (
-          optionsConfig.type === 'Radio' ||
-          optionsConfig.type === 'trueFalse'
-        ) {
+        if (optionsConfig.type === 'Radio') {
           defaultValue = option.value;
         } else if (optionsConfig.type === 'Checkbox') {
           defaultValue.push(option.value);

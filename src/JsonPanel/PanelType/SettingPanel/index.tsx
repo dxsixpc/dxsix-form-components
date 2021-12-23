@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tabs } from 'antd';
+import type { FormInstance } from 'antd';
 import { ComponentsRender } from '../../ComponentsRender';
 import type {
   PanelBaseProps,
@@ -9,7 +10,11 @@ import type {
 import { Wrapper } from './Styled';
 
 export interface SettingPanelProps extends PanelBaseProps {
-  onSettingChange: (changedValues: AnyObject, values: AnyObject) => void;
+  onSettingChange: (
+    changedValues: AnyObject,
+    values: AnyObject,
+    form: FormInstance<any>
+  ) => void;
 }
 
 // 渲染Tabs页

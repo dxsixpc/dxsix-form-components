@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    .ant-message {
+      z-index:1050;
+    }
+  }
+`;
 
 export const Wrapper = styled.div`
   height: 100%;

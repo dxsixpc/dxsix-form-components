@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Form } from 'antd';
+import type { FormInstance } from 'antd';
 import { getComponent } from '../components';
 import type { ComponentMapType, ComponentType } from '../type';
 import { Wrapper } from './Styled';
@@ -9,7 +10,11 @@ interface ComponentsRenderProps {
   initialValues?: any;
   componentList: ComponentType[];
   componentMap?: ComponentMapType;
-  onValuesChange: (changedValues: any, values: any) => void;
+  onValuesChange: (
+    changedValues: any,
+    values: any,
+    form: FormInstance<any>
+  ) => void;
 }
 
 // 渲染组件
@@ -31,7 +36,7 @@ export const ComponentsRender: React.FC<ComponentsRenderProps> = (props) => {
       ?.children;
     // 若有children，则表示此字段的值可能会用于判断渲染children
     if (isHaveChildren) setFormValues(values);
-    onValuesChange(changedValues, values);
+    onValuesChange(changedValues, values, form);
   };
 
   // 递归渲染页面

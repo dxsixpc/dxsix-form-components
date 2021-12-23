@@ -13,7 +13,7 @@ export interface OptionType {
 }
 
 // 选项可以选择的类型：单选、多选、判断
-export type OptionSelectType = 'Radio' | 'Checkbox' | 'trueFalse' | 'allType';
+export type OptionSelectType = 'Radio' | 'Checkbox' | 'allType';
 
 // 选项默认值的类型
 export interface OptionDefaultValueType {
@@ -24,7 +24,7 @@ export interface OptionDefaultValueType {
 }
 
 // 选项组件配置项
-export interface OptionsConfigType<T extends OptionSelectType> {
+export interface OptionsConfigType<T extends OptionSelectType = 'allType'> {
   // 选项的类型：单选、多选、判断
   type: OptionSelectType;
   // 选项组件的默认值

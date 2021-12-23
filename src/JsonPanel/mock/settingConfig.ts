@@ -1,4 +1,4 @@
-import type { PanelConfigType } from '../JsonPanel';
+import type { PanelConfigType } from '..';
 import type { RuleObject } from 'antd/lib/form';
 
 export const jsonPanelSetting: PanelConfigType = {
@@ -180,6 +180,15 @@ export const jsonPanelSetting: PanelConfigType = {
                 title: '贺词内容',
                 dataIndex: 'message',
                 align: 'center'
+              }
+            ],
+            componentList: [
+              {
+                id: 'message',
+                label: '贺词内容',
+                name: 'message',
+                type: 'FormTextArea',
+                rules: [{ required: true, message: '不能为空' }]
               }
             ]
           }

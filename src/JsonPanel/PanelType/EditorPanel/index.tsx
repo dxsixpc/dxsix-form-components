@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { FormMonacoEditor } from '../../../FormComponents';
 import type { PanelBaseProps, PanelConfigType } from '../../type';
 import SettingPanel from '../SettingPanel';
-import { formatJson, toJson } from './util';
+import { toJson } from './util';
 import { Wrapper } from './Styled';
 
 export interface EditorPanelProps extends PanelBaseProps {
@@ -23,11 +23,9 @@ const EditorPanel: React.FC<EditorPanelProps> = (props) => {
     panelConfig || ''
   );
   let initialValues: AnyObject = panelData || {};
-  let returnValue: AnyObject = {};
 
   // 每次组件改变时，格式化数据
   const onValuesChange = (changedValues: AnyObject) => {
-    returnValue = { ...returnValue, ...changedValues };
     initialValues = { ...initialValues, ...changedValues };
   };
 
@@ -41,7 +39,7 @@ const EditorPanel: React.FC<EditorPanelProps> = (props) => {
       <FormMonacoEditor
         height='100%'
         defaultLanguage={monacoLanguage}
-        value={formatJson(JSON.stringify(editorValue))}
+        value={JSON.stringify(editorValue, null, 2)}
         onChange={onMonacoChange}
       />
       <SettingPanel

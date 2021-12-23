@@ -25,5 +25,14 @@ Table.args = {
       dataIndex: 'message',
       align: 'center'
     }
+  ],
+  componentList: [
+    {
+      id: 'message',
+      label: '贺词内容',
+      name: 'message',
+      type: 'FormTextArea',
+      rules: [{ required: true, message: '不能为空' }]
+    }
   ]
 };

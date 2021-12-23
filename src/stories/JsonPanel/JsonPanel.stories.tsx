@@ -2,7 +2,7 @@ import React from 'react';
 import type { Story, Meta } from '@storybook/react';
 import { JsonPanel } from '../../JsonPanel';
 import type { JsonPanelProps } from '../../JsonPanel';
-import { jsonPanelSetting } from '../../mock/settingConfig';
+import { jsonPanelSetting } from '../../JsonPanel/mock/settingConfig';
 
 // import {
 //   Title,

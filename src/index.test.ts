@@ -1,4 +1,4 @@
-import { jsonPanelSetting } from '../src/mock/settingConfig';
+import { jsonPanelSetting } from './JsonPanel/mock/settingConfig';
 
 describe('ExampleComponent', () => {
   it('is truthy', () => {

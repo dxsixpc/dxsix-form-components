@@ -17,8 +17,8 @@ import Option from './Option';
 import { sortOptions } from './utils';
 
 interface OptionsContainerProps {
-  optionsConfig: OptionsConfigType<'allType'>;
-  onOptionsConfigChange: (value: OptionsConfigType<'allType'>) => void;
+  optionsConfig: OptionsConfigType;
+  onOptionsConfigChange: (value: OptionsConfigType) => void;
 }
 
 // 选项容器

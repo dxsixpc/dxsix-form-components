@@ -1,5 +1,6 @@
-import type { OptionsConfigType } from '../../type';
 import type { FormItemProps } from 'antd/lib/form';
+import type { FieldError } from 'rc-field-form/es/interface';
+import type { OptionsConfigType } from '../../type';
 import type {
   FormCheckboxProps,
   FormColorPickerProps,
@@ -58,14 +59,15 @@ export interface FormWidgetPropsType {
   AlertWidget: AlertWidgetProps;
   ButtonWidget: ButtonWidgetProps;
   TableWidget: TableWidgetProps;
+  [type: string]: any;
 }
 
 // 可嵌套的条件表达式
-export interface Expresssion {
+export interface Expression {
   // 且、或、非逻辑运算方式
   operation?: 'AND' | 'OR' | 'NOT';
   // 使用这种逻辑所关联的条件表达式
-  conditions?: Expresssion[];
+  conditions?: Expression[];
   // 需要比较的内容是什么类型。string | number | boolean等
   type?: string;
   // 指定组件里用于比较的属性字段，是比较value，name，id，还是其他等
@@ -94,7 +96,7 @@ export interface ImageType {
 
 export interface ComponentPropsType {
   // 选项组件的配置
-  optionsConfig?: OptionsConfigType<'allType'>;
+  optionsConfig?: OptionsConfigType;
   // 自定义属性
   [key: string]: any;
 }
@@ -106,7 +108,7 @@ export interface ComponentType extends FormItemProps {
   // 组件对应的name，单个表单中的区分组件的唯一标识，语义化,与接口对应属性字段相同
   name: string;
   // 组件的类型+值的类型
-  type: FormWidgetType;
+  type: FormWidgetType | string;
   // 组件的参数集合，props里的内容会传到组件里
   props?: ComponentPropsType & FormWidgetPropsType[ComponentType['type']];
   // 可嵌套的子组件
@@ -115,26 +117,48 @@ export interface ComponentType extends FormItemProps {
   [key: string]: any;
 }
 
+export interface ComponentFrameType {
+  // 对应组件的id
+  id: string;
+  // 子组件
+  children?: ComponentFrameType[];
+}
+
+export interface PanelComponentsType {
+  [key: string]: ComponentType;
+}
+
+// 面板数据结构类型
+export interface PanelConfigDataType {
+  // 结构与数据集中式
+  integrate: ComponentType[];
+  // 结构与数据分离式
+  separate: ComponentFrameType[];
+}
+
+// 数据结构可以选择的类型：集成，分离
+export type PanelConfigData = 'integrate' | 'separate';
+
 // 配置面板json子节点接口
-export interface PanelTabsType {
+export interface PanelTabsType<T extends PanelConfigData = 'integrate'> {
   // 唯一标识id
   id: string;
   // 配置面板左侧导航名称
   tabsName: string;
   // 下一级导航
-  childTabs?: PanelTabsType[];
+  childTabs?: PanelTabsType<T>[];
   // 当前导航页的组件
-  componentList: ComponentType[];
+  componentList: PanelConfigDataType[T];
 }
 
 // 配置面板Json数据结构
-export interface PanelConfigType {
+export interface PanelConfigType<T extends PanelConfigData = 'integrate'> {
   // 唯一标识id
   id: string;
   // 类型
   type: string;
   // 导航节点
-  tabs: PanelTabsType[];
+  tabs: PanelTabsType<T>[];
 }
 
 export type PanelType = 'EditorPanel' | 'SettingPanel';
@@ -143,10 +167,14 @@ export interface ComponentMapType {
   [type: string]: React.FC<any>;
 }
 
+export interface FieldErrorType {
+  [key: string]: FieldError;
+}
+
 export interface PanelBaseProps {
   panelData?: AnyObject;
   panelConfig?: PanelConfigType | string;
   componentMap?: ComponentMapType;
   monacoLanguage?: string;
-  onChange?: (panelData: any) => void;
+  onChange?: (returnValue: any) => void;
 }
